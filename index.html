@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BADR ZEJLI / SOFTWARE ENGINEER</title>
+<meta name="description" content="Badr Zejli — Computer Science, McGill. Builds node-based platforms, language tools, and game-engine automation. McWics Hackathon runner-up." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ecebe5;
+    --ink:#0a0a0a;
+    --red:#ff3b1f;
+    --line:#0a0a0a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{background:var(--paper)}
+  body{
+    background:var(--paper);color:var(--ink);
+    font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:500;
+    line-height:1.35;-webkit-font-smoothing:antialiased;
+    background-image:
+      linear-gradient(var(--paper) 0 0),
+      repeating-linear-gradient(0deg,transparent 0 31px,rgba(10,10,10,.06) 31px 32px);
+    background-blend-mode:multiply;
+  }
+  ::selection{background:var(--red);color:var(--paper)}
+  a{color:inherit;text-decoration:none}
+  a:hover{background:var(--ink);color:var(--paper)}
+  .mono{font-family:'Space Mono',monospace}
+  .ablack{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
+
+  /* page frame */
+  .frame{border:3px solid var(--ink);margin:1rem;background:var(--paper);position:relative}
+  @media(max-width:700px){.frame{margin:.5rem;border-width:2px}}
+
+  /* top bar */
+  .topbar{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+  .topbar > *{padding:.6rem 1rem}
+  .topbar > *:not(:last-child){border-right:3px solid var(--ink)}
+  .topbar .blink::after{content:'_';animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media(max-width:700px){.topbar{grid-template-columns:1fr 1fr}.topbar > *{font-size:.62rem;padding:.5rem .6rem}.topbar>*:nth-child(2){display:none}}
+
+  /* nav */
+  nav.main{display:flex;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+  nav.main a{padding:.85rem 1.25rem;border-right:3px solid var(--ink);font-weight:700}
+  nav.main .grow{flex:1;border-right:3px solid var(--ink);background:repeating-linear-gradient(-45deg,var(--ink) 0 6px,transparent 6px 14px)}
+  nav.main .last{border-right:none}
+
+  /* hero */
+  .hero{padding:2rem 1.5rem 1rem;border-bottom:3px solid var(--ink);position:relative}
+  .hero .meta-row{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+  .hero .meta-row .pill{border:2px solid var(--ink);padding:.15rem .55rem;font-weight:700}
+  .hero .meta-row .pill.red{background:var(--red);color:var(--paper);border-color:var(--ink)}
+  h1.giant{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;font-size:clamp(3.5rem,17vw,17rem);line-height:.82;letter-spacing:-.04em;text-transform:uppercase;margin:0}
+  h1.giant .red{color:var(--red)}
+  h1.giant .out{-webkit-text-stroke:3px var(--ink);color:var(--paper);text-stroke:3px var(--ink)}
+  .hero .strap{display:grid;grid-template-columns:2fr 1fr;border-top:3px solid var(--ink);margin-top:1.25rem}
+  .hero .strap > div{padding:1rem 1.25rem}
+  .hero .strap > div:first-child{border-right:3px solid var(--ink);font-size:1.05rem;font-weight:500;line-height:1.4;max-width:46rem}
+  .hero .strap > div:last-child{font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;line-height:1.5}
+  .hero .strap em{font-style:italic;background:var(--red);color:var(--paper);padding:0 .25rem}
+  @media(max-width:700px){.hero .strap{grid-template-columns:1fr}.hero .strap > div:first-child{border-right:0;border-bottom:3px solid var(--ink)}}
+
+  /* generic section header */
+  .sec-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper)}
+  .sec-head .num{padding:.55rem 1rem;border-right:3px solid var(--paper);font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem}
+  .sec-head h2{padding:.55rem 1rem;font-family:'Archivo Black',sans-serif;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase}
+  .sec-head .tag{padding:.55rem 1rem;border-left:3px solid var(--paper);font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase}
+
+  /* work */
+  .work-row{display:grid;grid-template-columns:130px 1fr 180px;border-bottom:3px solid var(--ink)}
+  .work-row > *{padding:1.5rem 1.25rem}
+  .work-row > *:not(:last-child){border-right:3px solid var(--ink)}
+  .work-row .when{font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;text-transform:uppercase}
+  .work-row h3{font-family:'Archivo Black',sans-serif;font-size:1.6rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.2rem;line-height:1}
+  .work-row .role{font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;margin-bottom:.85rem}
+  .work-row ul{list-style:none}
+  .work-row li{padding:.3rem 0 .3rem 1.6rem;position:relative;font-size:.95rem;border-top:1px dashed var(--ink)}
+  .work-row li:first-child{border-top:0}
+  .work-row li::before{content:'■';position:absolute;left:0;top:.45rem;color:var(--red);font-size:.7rem}
+  .work-row .place{font-family:'Space Mono',monospace;font-weight:700;font-size:.8rem;text-transform:uppercase;text-align:right}
+  @media(max-width:800px){.work-row{grid-template-columns:1fr}.work-row > *{border-right:0 !important;border-bottom:3px solid var(--ink);padding:1rem 1rem}.work-row > *:last-child{border-bottom:0}.work-row .place{text-align:left}}
+
+  /* projects grid */
+  .pgrid{display:grid;grid-template-columns:repeat(12,1fr);border-bottom:3px solid var(--ink)}
+  .pcard{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.5rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;position:relative;background:var(--paper)}
+  .pcard.red{background:var(--red);color:var(--paper)}
+  .pcard.red .stack span{border-color:var(--paper);color:var(--paper)}
+  .pcard .pnum{position:absolute;top:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem}
+  .pcard .badge{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .55rem;border:2px solid currentColor;margin-bottom:1rem}
+  .pcard h3{font-family:'Archivo Black',sans-serif;font-size:2rem;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
+  .pcard .blurb{font-size:.92rem;line-height:1.45;margin-bottom:1.25rem;max-width:42ch}
+  .pcard .stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
+  .pcard .stack span{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase;letter-spacing:.04em}
+  .pcard .corner{position:absolute;bottom:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;text-transform:uppercase}
+  .p1{grid-column:span 8}
+  .p2{grid-column:span 4}
+  .p3{grid-column:span 5}
+  .p4{grid-column:span 7}
+  .p5{grid-column:span 4}
+  .p6{grid-column:span 4}
+  .p7{grid-column:span 4}
+  .pcard:nth-last-child(-n+1){border-right:0}
+  @media(max-width:1000px){.pcard{grid-column:span 12 !important;border-right:0}}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--ink)}
+  .skills > div{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.25rem 1.25rem 1.5rem}
+  .skills > div:nth-child(3n){border-right:0}
+  .skills > div:nth-last-child(-n+3){border-bottom:0}
+  .skills h4{font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
+  .skills h4 span{background:var(--ink);color:var(--paper);padding:.1rem .4rem;margin-right:.4rem}
+  .skills ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem}
+  .skills li{font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase}
+  .skills li:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:800px){.skills{grid-template-columns:1fr}.skills > div{border-right:0 !important}}
+
+  /* marquee */
+  .marq{overflow:hidden;border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper);padding:.75rem 0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.02em;font-size:1.1rem;white-space:nowrap}
+  .marq span{display:inline-block;padding-left:100%;animation:m 28s linear infinite}
+  .marq i{font-style:normal;color:var(--red);margin:0 1rem}
+  @keyframes m{to{transform:translateX(-100%)}}
+
+  /* contact */
+  .contact{padding:3rem 1.5rem;border-bottom:3px solid var(--ink);position:relative}
+  .contact h2{font-family:'Archivo Black',sans-serif;font-size:clamp(3rem,12vw,11rem);text-transform:uppercase;line-height:.82;letter-spacing:-.04em}
+  .contact h2 .red{color:var(--red)}
+  .contact .grid{margin-top:2rem;display:grid;grid-template-columns:repeat(4,1fr);border:3px solid var(--ink)}
+  .contact .grid a{padding:1rem 1rem;border-right:3px solid var(--ink);font-family:'Space Mono',monospace;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;gap:.25rem}
+  .contact .grid a:last-child{border-right:0}
+  .contact .grid a small{font-size:.65rem;font-weight:400;opacity:.7}
+  .contact .grid a:hover{background:var(--red);color:var(--paper)}
+  @media(max-width:800px){.contact .grid{grid-template-columns:1fr 1fr}.contact .grid a{border-bottom:3px solid var(--ink)}.contact .grid a:nth-child(2n){border-right:0}.contact .grid a:nth-last-child(-n+2){border-bottom:0}}
+
+  /* footer */
+  footer{display:grid;grid-template-columns:1fr 1fr 1fr;font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
+  footer > *{padding:.7rem 1rem;border-right:3px solid var(--ink)}
+  footer > *:last-child{border-right:0;text-align:right}
+  footer .center{text-align:center}
+  @media(max-width:700px){footer{grid-template-columns:1fr}footer > *{border-right:0;border-bottom:3px solid var(--ink);text-align:left !important}footer > *:last-child{border-bottom:0}}
+
+  /* anchor offset */
+  section{scroll-margin-top:1rem}
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <div class="topbar">
+    <div>FILE: BADR.ZEJLI / V.2026.05</div>
+    <div>PORTFOLIO</div>
+    <div style="text-align:right" class="blink">SYSTEM ONLINE</div>
+  </div>
+
+  <nav class="main">
+    <a href="#hero">00 / INDEX</a>
+    <a href="#work">01 / WORK</a>
+    <a href="#projects">02 / PROJECTS</a>
+    <a href="#skills">03 / STACK</a>
+    <span class="grow"></span>
+    <a href="#contact" class="last">04 / CONTACT →</a>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="meta-row">
+      <div><span class="pill red">● AVAILABLE</span> SUMMER 2026</div>
+      <div>MONTRÉAL · QC · CA</div>
+      <div>B.SC. COMPUTER SCIENCE — McGILL '27</div>
+    </div>
+    <h1 class="giant">BADR<br><span class="out">ZEJ</span><span class="red">LI.</span></h1>
+    <div class="strap">
+      <div>I build <em>node-based platforms</em>, language tools, and game-engine automation. Software that turns dense systems into something you can actually touch. Currently studying CS at McGill, shipping things in the open.</div>
+      <div>
+        <div>FOCUS / FULL-STACK</div>
+        <div>FOCUS / SYSTEMS</div>
+        <div>FOCUS / TOOLING</div>
+        <div style="margin-top:.5rem">RECENT / RUNNER-UP</div>
+        <div>McWICS HACKATHON 2026</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="marq"><span>SHIPPING IN PUBLIC <i>✱</i> NEXT.JS · AWS · RUST · UE5 <i>✱</i> McWICS HACKATHON RUNNER-UP <i>✱</i> AVAILABLE FOR SUMMER 2026 <i>✱</i> MONTRÉAL → ANYWHERE <i>✱</i> BADR ZEJLI <i>✱</i> SHIPPING IN PUBLIC <i>✱</i> NEXT.JS · AWS · RUST · UE5 <i>✱</i></span></div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="sec-head">
+      <div class="num">§01</div>
+      <h2>SELECTED WORK</h2>
+      <div class="tag">2021 — PRESENT</div>
+    </div>
+
+    <div class="work-row">
+      <div class="when">SUM<br>2025</div>
+      <div>
+        <h3>DUM</h3>
+        <div class="role">Instructional Design Intern</div>
+        <ul>
+          <li>Migrated and translated 15 high-school courses to a new LMS in 3 months — interactive HTML modules with embedded multimedia, generative-AI in the pipeline.</li>
+          <li>Designed virtual physics labs in RayOptics; modeled optical systems via structured JSON specs.</li>
+          <li>Built a Python web scraper to fetch, organize, and reformat course materials for offline distribution.</li>
+          <li>Shipped a JS Google Sheets automation generating course summaries — cut instructor prep time ~50%.</li>
+        </ul>
+      </div>
+      <div class="place">MONTRÉAL<br>QC</div>
+    </div>
+
+    <div class="work-row">
+      <div class="when">2022→<br>NOW</div>
+      <div>
+        <h3>TUTORAX</h3>
+        <div class="role">Academic Tutor</div>
+        <ul>
+          <li>One-on-one tutoring for high-school and primary students, specialty in turning dense math/CS into clean explanations.</li>
+          <li>Structured curricula, progress tracking, parent reporting — the communication discipline that shows up in every spec doc I write today.</li>
+        </ul>
+      </div>
+      <div class="place">MONTRÉAL<br>QC</div>
+    </div>
+
+    <div class="work-row">
+      <div class="when">2021—<br>2022</div>
+      <div>
+        <h3>JAQUÉBEC</h3>
+        <div class="role">VP, Marketing &amp; Sales</div>
+        <ul>
+          <li>Defined a young startup's visual identity, voice, and pitch — branding, sales decks, customer conversations.</li>
+          <li>Translated a technical product into something a non-technical buyer would actually pay for.</li>
+        </ul>
+      </div>
+      <div class="place">MONTRÉAL<br>QC</div>
+    </div>
+
+    <div class="work-row" style="border-bottom:0">
+      <div class="when">2024→<br>NOW</div>
+      <div>
+        <h3>McGILL · MSA &amp; MIT McGILL</h3>
+        <div class="role">Director of Education / Director of Community Building</div>
+        <ul>
+          <li>MSA — coordinated logistics &amp; comms for 50+ educational events.</li>
+          <li>MIT McGill — planned coding events, supported hackathon logistics &amp; student engagement.</li>
+        </ul>
+      </div>
+      <div class="place">McGILL<br>UNIV.</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="sec-head">
+      <div class="num">§02</div>
+      <h2>THINGS I'VE SHIPPED</h2>
+      <div class="tag">SELECTED · 2024 — 2026</div>
+    </div>
+
+    <div class="pgrid">
+
+      <article class="pcard p1 red">
+        <span class="pnum">№ 01</span>
+        <div>
+          <span class="badge">RUNNER-UP / McWICS 2026</span>
+          <h3>FALCENTRY.</h3>
+          <p class="blurb">Node-based platform for designing and solving visual puzzles. Awarded runner-up out of 100+ projects at McGill's McWics Hackathon. Real-time multi-client sync, scalable AWS backend, SEO-optimized Next.js frontend.</p>
+        </div>
+        <div class="stack"><span>NEXT.JS</span><span>REACT</span><span>AWS</span><span>FIREBASE</span></div>
+        <span class="corner">→ FALCENTRY.COM</span>
+      </article>
+
+      <article class="pcard p2">
+        <span class="pnum">№ 02</span>
+        <div>
+          <h3>OPEN<br>ROBOTICS</h3>
+          <p class="blurb">JavaFX warehouse-simulation platform. Co-authored an 80-page software spec with a 7-person team; designed every UI screen in Figma; built the visual identity in Illustrator.</p>
+        </div>
+        <div class="stack"><span>JAVA</span><span>JAVAFX</span><span>POSTGRES</span><span>FIGMA</span></div>
+      </article>
+
+      <article class="pcard p3">
+        <span class="pnum">№ 03</span>
+        <div>
+          <h3>TAHQÎQ.</h3>
+          <p class="blurb">Desktop app for studying language through syntax-tree flashcards. Build constituency trees with drag-and-drop; review on an SM-2 spaced-repetition schedule. Offline-first, native installers across Win / macOS / Linux.</p>
+        </div>
+        <div class="stack"><span>RUST</span><span>TAURI</span><span>REACT</span><span>TYPESCRIPT</span></div>
+      </article>
+
+      <article class="pcard p4">
+        <span class="pnum">№ 04</span>
+        <div>
+          <h3>DHIKRTOP</h3>
+          <p class="blurb">Browser extension that reads context — what you're doing, when you're idle — to surface adhkar at the right moment. Plus a Qur'an memorization aide with random-placement verification and progress tracking.</p>
+        </div>
+        <div class="stack"><span>TYPESCRIPT</span><span>VITE</span><span>TAURI</span><span>WEB-SPEECH</span></div>
+      </article>
+
+      <article class="pcard p5">
+        <span class="pnum">№ 05</span>
+        <div>
+          <h3>BIKERS<br>ESTIMATOR</h3>
+          <p class="blurb">Linear-regression model predicting daily biker counts from engineered environmental and temporal features. Reusable preprocessing → feature engineering → evaluation pipeline.</p>
+        </div>
+        <div class="stack"><span>PYTHON</span><span>NUMPY</span><span>SCIKIT</span></div>
+      </article>
+
+      <article class="pcard p6">
+        <span class="pnum">№ 06</span>
+        <div>
+          <h3>HAYBA<br>MCP</h3>
+          <p class="blurb">Model Context Protocol server that bridges AI assistants directly into Unreal's PCGEx procedural toolkit and Gaea terrain — drive node graphs, terrain builds, and editor workflows from natural language.</p>
+        </div>
+        <div class="stack"><span>MCP</span><span>UE5</span><span>PCGEX</span><span>GAEA</span><span>TYPESCRIPT</span></div>
+      </article>
+
+      <article class="pcard p7" style="border-right:0">
+        <span class="pnum">№ 07</span>
+        <div>
+          <h3>MIND<br>STEP AR</h3>
+          <p class="blurb">Augmented-reality exercise HUD with preset-driven workout flows. Tooling around component generation and JSON-driven layout authoring.</p>
+        </div>
+        <div class="stack"><span>AR</span><span>PYTHON</span><span>JSON-DSL</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="sec-head">
+      <div class="num">§03</div>
+      <h2>THE STACK</h2>
+      <div class="tag">WHAT I REACH FOR</div>
+    </div>
+
+    <div class="skills">
+      <div>
+        <h4><span>A</span>LANGUAGES</h4>
+        <ul><li>PYTHON</li><li>JAVA</li><li>C / C++</li><li>TYPESCRIPT</li><li>JAVASCRIPT</li><li>OCAML</li><li>RUST</li><li>SQL</li><li>MIPS</li><li>BASH</li><li>UE5 BP</li></ul>
+      </div>
+      <div>
+        <h4><span>B</span>FRONTEND</h4>
+        <ul><li>NEXT.JS</li><li>REACT</li><li>TAURI</li><li>VITE</li><li>HTML/CSS</li><li>FIGMA</li><li>JAVAFX</li></ul>
+      </div>
+      <div>
+        <h4><span>C</span>BACKEND / INFRA</h4>
+        <ul><li>AWS</li><li>FIREBASE</li><li>SUPABASE</li><li>POSTGRES</li><li>RENDER</li><li>DOCKER</li></ul>
+      </div>
+      <div>
+        <h4><span>D</span>DATA / ML</h4>
+        <ul><li>NUMPY</li><li>SCIKIT-LEARN</li><li>R</li><li>STATISTICS</li></ul>
+      </div>
+      <div>
+        <h4><span>E</span>COURSEWORK</h4>
+        <ul><li>ALGORITHMS</li><li>OS</li><li>THEORY OF COMP.</li><li>FUNCTIONAL PROG.</li><li>DATABASES</li><li>ML</li><li>SOFT-ENG PROJECT</li></ul>
+      </div>
+      <div>
+        <h4><span>F</span>LEADERSHIP</h4>
+        <ul><li>MSA McGILL — DIR. EDUCATION</li><li>MIT McGILL — DIR. COMMUNITY</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="marq"><span>HIRE ME <i>✱</i> ZEJBADR@GMAIL.COM <i>✱</i> +1 438 366 1077 <i>✱</i> GITHUB.COM/ZAJALIST <i>✱</i> LINKEDIN / BADR-ZEJLI <i>✱</i> ZAJALIST.COM <i>✱</i> HIRE ME <i>✱</i> ZEJBADR@GMAIL.COM <i>✱</i></span></div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="sec-head" style="margin-bottom:2rem">
+      <div class="num">§04</div>
+      <h2>END / CONTACT</h2>
+      <div class="tag">REPLIES WITHIN 24H</div>
+    </div>
+    <h2>LET'S BUILD<br>SOMETHING <span class="red">GOOD.</span></h2>
+    <div class="grid">
+      <a href="mailto:zejbadr@gmail.com"><small>EMAIL →</small>ZEJBADR@GMAIL.COM</a>
+      <a href="tel:+14383661077"><small>PHONE →</small>+1 438 366 1077</a>
+      <a href="https://github.com/zajalist" target="_blank" rel="noopener"><small>GITHUB →</small>/ZAJALIST</a>
+      <a href="https://www.linkedin.com/in/badr-zejli-324228328/" target="_blank" rel="noopener"><small>LINKEDIN →</small>BADR-ZEJLI</a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 BADR ZEJLI</div>
+    <div class="center">DESIGNED &amp; HAND-CODED · MONTRÉAL</div>
+    <div>NO TEMPLATES · NO TRACKERS</div>
+  </footer>
+
+</div>
+
+<!-- BUILT BY HAND. VIEW SOURCE FREELY. -->
+</body>
+</html>
