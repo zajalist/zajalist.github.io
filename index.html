@@ -32,11 +32,9 @@
   .mono{font-family:'Space Mono',monospace}
   .ablack{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
 
-  /* page frame */
   .frame{border:3px solid var(--ink);margin:1rem;background:var(--paper);position:relative}
   @media(max-width:700px){.frame{margin:.5rem;border-width:2px}}
 
-  /* top bar */
   .topbar{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
   .topbar > *{padding:.6rem 1rem}
   .topbar > *:not(:last-child){border-right:3px solid var(--ink)}
@@ -44,32 +42,63 @@
   @keyframes blink{50%{opacity:0}}
   @media(max-width:700px){.topbar{grid-template-columns:1fr 1fr}.topbar > *{font-size:.62rem;padding:.5rem .6rem}.topbar>*:nth-child(2){display:none}}
 
-  /* nav */
   nav.main{display:flex;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
   nav.main a{padding:.85rem 1.25rem;border-right:3px solid var(--ink);font-weight:700}
   nav.main .grow{flex:1;border-right:3px solid var(--ink);background:repeating-linear-gradient(-45deg,var(--ink) 0 6px,transparent 6px 14px)}
   nav.main .last{border-right:none}
 
   /* hero */
-  .hero{padding:2rem 1.5rem 1rem;border-bottom:3px solid var(--ink);position:relative}
+  .hero{padding:2rem 1.5rem 1rem;border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
   .hero .meta-row{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
   .hero .meta-row .pill{border:2px solid var(--ink);padding:.15rem .55rem;font-weight:700}
   .hero .meta-row .pill.red{background:var(--red);color:var(--paper);border-color:var(--ink)}
-  h1.giant{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;font-size:clamp(3.5rem,17vw,17rem);line-height:.82;letter-spacing:-.04em;text-transform:uppercase;margin:0}
+  h1.giant{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;font-size:clamp(3.5rem,17vw,17rem);line-height:.82;letter-spacing:-.04em;text-transform:uppercase;margin:0;position:relative;z-index:2}
   h1.giant .red{color:var(--red)}
   h1.giant .out{-webkit-text-stroke:3px var(--ink);color:var(--paper);text-stroke:3px var(--ink)}
-  .hero .strap{display:grid;grid-template-columns:2fr 1fr;border-top:3px solid var(--ink);margin-top:1.25rem}
+
+  .hero-ascii{font-family:'Space Mono',monospace;font-size:.42rem;line-height:1;white-space:pre;color:var(--ink);opacity:.85;margin-top:1.5rem;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:.75rem .25rem;overflow:hidden;letter-spacing:0;display:block;text-align:center}
+  .hero-ascii small{display:block;font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-top:.6rem;opacity:.7}
+  @media(max-width:900px){.hero-ascii{font-size:.32rem}}
+  @media(max-width:600px){.hero-ascii{font-size:.24rem}}
+
+  .hero .strap{display:grid;grid-template-columns:2fr 1fr}
   .hero .strap > div{padding:1rem 1.25rem}
   .hero .strap > div:first-child{border-right:3px solid var(--ink);font-size:1.05rem;font-weight:500;line-height:1.4;max-width:46rem}
   .hero .strap > div:last-child{font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;line-height:1.5}
   .hero .strap em{font-style:italic;background:var(--red);color:var(--paper);padding:0 .25rem}
   @media(max-width:700px){.hero .strap{grid-template-columns:1fr}.hero .strap > div:first-child{border-right:0;border-bottom:3px solid var(--ink)}}
 
-  /* generic section header */
+  /* sec head */
   .sec-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper)}
   .sec-head .num{padding:.55rem 1rem;border-right:3px solid var(--paper);font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem}
   .sec-head h2{padding:.55rem 1rem;font-family:'Archivo Black',sans-serif;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase}
   .sec-head .tag{padding:.55rem 1rem;border-left:3px solid var(--paper);font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase}
+
+  /* projects */
+  .pgrid{display:grid;grid-template-columns:repeat(12,1fr);border-bottom:3px solid var(--ink)}
+  .pcard{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.5rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between;min-height:340px;position:relative;background:var(--paper)}
+  .pcard.red{background:var(--red);color:var(--paper)}
+  .pcard.red .stack span{border-color:var(--paper);color:var(--paper)}
+  .pcard.red .ascii{color:var(--paper)}
+  .pcard .pnum{position:absolute;top:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem}
+  .pcard .badge{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .55rem;border:2px solid currentColor;margin-bottom:1rem}
+  .pcard h3{font-family:'Archivo Black',sans-serif;font-size:2rem;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
+  .pcard .ascii{font-family:'Space Mono',monospace;font-size:.42rem;line-height:1;white-space:pre;display:block;margin:.6rem 0;padding:.4rem;border:2px solid currentColor;color:var(--ink);overflow:hidden;text-align:center}
+  .pcard.red .ascii{border-color:var(--paper)}
+  .pcard .ascii.tall{font-size:.5rem}
+  .pcard .blurb{font-size:.92rem;line-height:1.45;margin-bottom:1rem;max-width:42ch}
+  .pcard .stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
+  .pcard .stack span{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase;letter-spacing:.04em}
+  .pcard .corner{position:absolute;bottom:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;text-transform:uppercase}
+  .p1{grid-column:span 8}
+  .p2{grid-column:span 4}
+  .p3{grid-column:span 5}
+  .p4{grid-column:span 7}
+  .p5{grid-column:span 7}
+  .p6{grid-column:span 5}
+  .p7{grid-column:span 4}
+  .p8{grid-column:span 8}
+  @media(max-width:1000px){.pcard{grid-column:span 12 !important;border-right:0}}
 
   /* work */
   .work-row{display:grid;grid-template-columns:130px 1fr 180px;border-bottom:3px solid var(--ink)}
@@ -84,28 +113,6 @@
   .work-row li::before{content:'■';position:absolute;left:0;top:.45rem;color:var(--red);font-size:.7rem}
   .work-row .place{font-family:'Space Mono',monospace;font-weight:700;font-size:.8rem;text-transform:uppercase;text-align:right}
   @media(max-width:800px){.work-row{grid-template-columns:1fr}.work-row > *{border-right:0 !important;border-bottom:3px solid var(--ink);padding:1rem 1rem}.work-row > *:last-child{border-bottom:0}.work-row .place{text-align:left}}
-
-  /* projects grid */
-  .pgrid{display:grid;grid-template-columns:repeat(12,1fr);border-bottom:3px solid var(--ink)}
-  .pcard{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.5rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;position:relative;background:var(--paper)}
-  .pcard.red{background:var(--red);color:var(--paper)}
-  .pcard.red .stack span{border-color:var(--paper);color:var(--paper)}
-  .pcard .pnum{position:absolute;top:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem}
-  .pcard .badge{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .55rem;border:2px solid currentColor;margin-bottom:1rem}
-  .pcard h3{font-family:'Archivo Black',sans-serif;font-size:2rem;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
-  .pcard .blurb{font-size:.92rem;line-height:1.45;margin-bottom:1.25rem;max-width:42ch}
-  .pcard .stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
-  .pcard .stack span{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase;letter-spacing:.04em}
-  .pcard .corner{position:absolute;bottom:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;text-transform:uppercase}
-  .p1{grid-column:span 8}
-  .p2{grid-column:span 4}
-  .p3{grid-column:span 5}
-  .p4{grid-column:span 7}
-  .p5{grid-column:span 4}
-  .p6{grid-column:span 4}
-  .p7{grid-column:span 4}
-  .pcard:nth-last-child(-n+1){border-right:0}
-  @media(max-width:1000px){.pcard{grid-column:span 12 !important;border-right:0}}
 
   /* skills */
   .skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--ink)}
@@ -125,10 +132,9 @@
   .marq i{font-style:normal;color:var(--red);margin:0 1rem}
   @keyframes m{to{transform:translateX(-100%)}}
 
-  /* contact */
-  .contact{padding:3rem 1.5rem;border-bottom:3px solid var(--ink);position:relative}
-  .contact h2{font-family:'Archivo Black',sans-serif;font-size:clamp(3rem,12vw,11rem);text-transform:uppercase;line-height:.82;letter-spacing:-.04em}
-  .contact h2 .red{color:var(--red)}
+  .contact{padding:3rem 1.5rem;border-bottom:3px solid var(--ink)}
+  .contact h2.big{font-family:'Archivo Black',sans-serif;font-size:clamp(3rem,12vw,11rem);text-transform:uppercase;line-height:.82;letter-spacing:-.04em;margin-top:1rem}
+  .contact h2.big .red{color:var(--red)}
   .contact .grid{margin-top:2rem;display:grid;grid-template-columns:repeat(4,1fr);border:3px solid var(--ink)}
   .contact .grid a{padding:1rem 1rem;border-right:3px solid var(--ink);font-family:'Space Mono',monospace;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;gap:.25rem}
   .contact .grid a:last-child{border-right:0}
@@ -136,14 +142,12 @@
   .contact .grid a:hover{background:var(--red);color:var(--paper)}
   @media(max-width:800px){.contact .grid{grid-template-columns:1fr 1fr}.contact .grid a{border-bottom:3px solid var(--ink)}.contact .grid a:nth-child(2n){border-right:0}.contact .grid a:nth-last-child(-n+2){border-bottom:0}}
 
-  /* footer */
   footer{display:grid;grid-template-columns:1fr 1fr 1fr;font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
   footer > *{padding:.7rem 1rem;border-right:3px solid var(--ink)}
   footer > *:last-child{border-right:0;text-align:right}
   footer .center{text-align:center}
   @media(max-width:700px){footer{grid-template-columns:1fr}footer > *{border-right:0;border-bottom:3px solid var(--ink);text-align:left !important}footer > *:last-child{border-bottom:0}}
 
-  /* anchor offset */
   section{scroll-margin-top:1rem}
 </style>
 </head>
@@ -159,20 +163,56 @@
 
   <nav class="main">
     <a href="#hero">00 / INDEX</a>
-    <a href="#work">01 / WORK</a>
-    <a href="#projects">02 / PROJECTS</a>
+    <a href="#projects">01 / PROJECTS</a>
+    <a href="#work">02 / WORK</a>
     <a href="#skills">03 / STACK</a>
     <span class="grow"></span>
-    <a href="#contact" class="last">04 / CONTACT →</a>
+    <a href="#contact" class="last">04 / CONTACT &rarr;</a>
   </nav>
 
   <header class="hero" id="hero">
     <div class="meta-row">
-      <div><span class="pill red">● AVAILABLE</span> SUMMER 2026</div>
+      <div><span class="pill red">&bull; AVAILABLE</span> SUMMER 2026</div>
       <div>MONTRÉAL · QC · CA</div>
       <div>B.SC. COMPUTER SCIENCE — McGILL '27</div>
     </div>
     <h1 class="giant">BADR<br><span class="out">ZEJ</span><span class="red">LI.</span></h1>
+    <pre class="hero-ascii" aria-hidden="true">=====------------:::::::::::::::::::::::::-------------------------------------::::::::::::------------------=
+=----------------------::::::::::::----====++++++*============+**********+++++=---=========++++++++++++++++===
+****++++*****#**#**#**#*******************************#*************##*******************************##*******
+*+++++++++++=+==========------------------==************+**************==:::::::::::::::::------------------==
+=--------::::::::::.......................%***++++++++*+++*+**++*++****#%.................................::::
+..........                                %*+++++++++++++++++++++++++++*#                                    .
+...                                       %*++++++=++=++=+++++=++++++++*#                                     
+..                                        %++=+==========++=====+==++=+*#                                     
+..                                        %++=============+============+%                                     
+..                                        #------::::::::::::::::::::::-#                                     
+..                                        @%#############################.                                    
+:.                                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#.                                    
+:.                                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#.                                    
+..                                        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#.                                    
+..                                       .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#.                                    
+ .                                       .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#.                                    
+                                         .@@@@@@@@@@@@@@@@@@@@%%%%%@@@@##.                    ................
+**+++++++++*++++++++=++++++++++++++++===-=@%%%%%%######****++++++++***#*#=====+++++++++++++++++++********++***
+#########+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*+*@@@@@@@@@@@%%##*++=---=++*##%%: #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*+###
++++++++++=%@@@@@@@@@@@@@@@@@@@@@@@@@@@@#*+@@@@@@@@%@@@@@@@@%#+++**##%%%%. =#####%%%%%%%%%%%%%%%%%%%%%%%@@+=+++
++++++++++=#@@@@@@@@@@@@@@@@@@@@@@@@@@@%-=+*%@@@@@@*%@@@@**@%######%%%%%#. +@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+=+++
+**+++++++=#@@@@@@@@@@@@@@@@@@@@@@@@@@#-:::::+@@@@@@@@@@@@@@@%####%%%%%@%..*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+=+++
++++=+++++=#@@@@@@@@@@@@@@@@@@@@@@@@@@==:---+=@@@@@@@@@@@@@@@@%%%%%%%%%@%*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*=+++
++***++++++#@@@@#:..-@@@@@@@@@@@@@@@@@++---=+=@@@@@@@@@@@%%@@@@%%+--=:---===--@@@@@@@@@@@@@@@@@+=+%@@@@@@@+=+++
+@@@@===+++*+#%+      +++=#@@@%#%%#++**-----=##@@@@@@@@@@@#@@@@+%+:-:---------*@@@@@@#++++++**+====+*+===+=++++
+@@@*##*****%@@#    .=****@@@@@@@@@#*##==++-#@%@@@@@@@@@@@@@@@@@@#+*##*#+-====%@@@@@@@*+*+#@@@%%@%***+##%##*+++
+:---------+#+==.   .=--------@@%%@%++++*%#+*#@@@@@@@@@@@@@@@@@@@@%@@*===--=--#@@@@@@@*++#@@@@@@@%%%%#%@@%%%*+*
+          *-           ::::--@@#.=*#%*++*+=+%@@@@@@@@@@@@@@@@@@@@@@@*==---===%@@@@@@@%%@@@@@@@%#*#@@@@@@@@@@*=
+          %:         .:--===+@@#-::-+-.:++*#%@@@@@@@@@@@@@@@@@@@@+:-::-=--*@@@@@@@@@##@@@@%%#*%%*%@@@@@@@%%@@%
+:.......  .         ..==---+++-..-##-:*@@@@%%@@@@@@@@%@@@@@@@%@@@@= ==*##@@@@@%@@%@::#*@@%%@@@@%#@@@@@@@@@%###
+**+==+==.  ..           .=#@@@@@@@@@#*@@@@@%@@@@@@@@@@@@@@@@@@@@@@@#     .:-===**++=+*%++#@@@@@%#@@@%##*+=----
+ .      ..:=########*=*@@@@@@@@@@@@@@@@@#+#*=*+@@@@@@@@@@@@@@@@@@@@@*: .--**+*######*-:.  .+**#%#%%=----------
+       :=*@@@@@@@@@@@=+@@@@@@@@@@@@@@%@@@%%@*-.%%%%%%%%@@%%@%####%@@@%+::::...::::::-:...-==-::===-=++========
+ .:=*%@@@@@@@@@@@@@@@%@@@@@@@@%#@@@@@%@@@%@@%%%#####*##########**#@@%#@=-:::::::.....-=#%++=-====++**==+=***+-
+@@@@@@@@@@@@@@@@@@@@@@@@@@@*+===-*@@@@@@%##**%@##*******#*******#%*#@%%##*=+++++++++++++*===+##*+***==++#%%%#*
+@@@@@@@@@@@@@@@@@@@@@@@@@@**++++=+@@@@@%##%%**##***************+%@**@@%@@@@@@@@@@@@@@@@@@*-+*####**++**###%%##<small>↑ McWICS HACKATHON 2026 · RUNNER-UP · LOCKSTEP / FALCENTRY</small></pre>
     <div class="strap">
       <div>I build <em>node-based platforms</em>, language tools, and game-engine automation. Software that turns dense systems into something you can actually touch. Currently studying CS at McGill, shipping things in the open.</div>
       <div>
@@ -185,12 +225,217 @@
     </div>
   </header>
 
-  <div class="marq"><span>SHIPPING IN PUBLIC <i>✱</i> NEXT.JS · AWS · RUST · UE5 <i>✱</i> McWICS HACKATHON RUNNER-UP <i>✱</i> AVAILABLE FOR SUMMER 2026 <i>✱</i> MONTRÉAL → ANYWHERE <i>✱</i> BADR ZEJLI <i>✱</i> SHIPPING IN PUBLIC <i>✱</i> NEXT.JS · AWS · RUST · UE5 <i>✱</i></span></div>
+  <div class="marq"><span>SHIPPING IN PUBLIC <i>&#10033;</i> NEXT.JS · AWS · RUST · UE5 <i>&#10033;</i> McWICS HACKATHON RUNNER-UP <i>&#10033;</i> AVAILABLE FOR SUMMER 2026 <i>&#10033;</i> MONTRÉAL → ANYWHERE <i>&#10033;</i> BADR ZEJLI <i>&#10033;</i> SHIPPING IN PUBLIC <i>&#10033;</i> NEXT.JS · AWS · RUST · UE5 <i>&#10033;</i></span></div>
 
-  <!-- WORK -->
-  <section id="work">
+  <!-- PROJECTS FIRST -->
+  <section id="projects">
     <div class="sec-head">
       <div class="num">§01</div>
+      <h2>THINGS I'VE SHIPPED</h2>
+      <div class="tag">SELECTED · 2024 — 2026</div>
+    </div>
+
+    <div class="pgrid">
+
+      <article class="pcard p1 red">
+        <span class="pnum">№ 01</span>
+        <div>
+          <span class="badge">RUNNER-UP / McWICS 2026</span>
+          <h3>FALCENTRY.</h3>
+          <pre class="ascii" aria-hidden="true">**-.:..=##*************#**++++++**+==+***#+-.=:-##
+++-...  :-********+=:. -**+==-+++++*****++:     -:
+++-::...   -==++=-:..   .-=+*******+=++*:   .     
+=++=-:.....    -+=::::.     *#****-     .   .     
+ . --:..  ....   . ....     .-+++=-..      ...    
+              =-    .                ... ...  ..  
+             +*::                                 
+        .=::-#+.-:....                       . ...
+  .=.:.:+*=*+=#*#*.-------.                    .. 
+.=+*::++*#*++#**++.------=--=-:                   
+-**+:+#**=***#**. :==-+=++====+=+-:::....         
++***-+#*+**+++++   ::*--**..::-+*--===-=-+=-::::::
+*****#*+*%*+***+:--=%@%%**:. -*=. .----:-%.:=-----
++***%%%#####*#####%*****#*+-::=+:=+*#%=:-*-=*==---
+-++#@@@@@%####%%*##*==***#***==+====++++-*===-====
+**-:+#@@@@%#%%%*-*%***+---=+=++#=++:=++#++==--==+=
+@@@%%*=%@%%%@@%=+*%#+++*#==---:==+***#%@****+**++*
+@@@@%*=#@%%#####@%%#=+##%+:.:--::-+*#*%@+*#=-=*%@@
+@@@@#+=*#*#%###%%#++*+:.-: -*+##+=*#*+@@#**#@@@@@@
+@@@@%%#++==*######=-#*--+*+%@****+*+-:%@%:=@@@@@@@
+@@@@@@@@@%*=*#%#****#**###**@+:..+=: +@@@++%%@@@@@
+@@#%%##%#%*=+==+----=+##***#@*==+@=+-@@@@%@@@@@@@@</pre>
+          <p class="blurb">Node-based platform for designing and solving visual puzzles. Awarded runner-up out of 100+ projects at McGill's McWics Hackathon. Real-time multi-client sync, scalable AWS backend, SEO-optimized Next.js frontend.</p>
+        </div>
+        <div class="stack"><span>NEXT.JS</span><span>REACT</span><span>AWS</span><span>FIREBASE</span></div>
+        <span class="corner">→ FALCENTRY.COM</span>
+      </article>
+
+      <article class="pcard p2">
+        <span class="pnum">№ 02</span>
+        <div>
+          <h3>MERMAN.</h3>
+          <pre class="ascii tall" aria-hidden="true"> +-----------+      +-----------+
+ |   USER    |-----&gt;|   ORDER   |
+ +-----------+      +-----------+
+ | +name     |      | +id       |
+ | +email    |      | +total    |
+ +-----------+      +-----------+
+        |                 |
+        v                 v
+   ```mermaid```   -&gt;   .hpp / .py
+   classDiagram         BOILERPLATE
+        |                 ^
+        +----[ MERMAN ]---+
+   REST · CLI · DISCORD-BOT</pre>
+          <p class="blurb">A Mermaid class-diagram → code compiler. Sketch your architecture in Mermaid, get one C++ or Python boilerplate file per class — via REST API, CLI, or a Botpress-powered Discord agent. Botpress hackathon submission.</p>
+        </div>
+        <div class="stack"><span>TYPESCRIPT</span><span>BOTPRESS</span><span>EXPRESS</span><span>ZOD</span></div>
+      </article>
+
+      <article class="pcard p3">
+        <span class="pnum">№ 03</span>
+        <div>
+          <h3>OPEN<br>ROBOTICS</h3>
+          <pre class="ascii" aria-hidden="true">@@@@@@@@@@@@@:::@@@@@@:=+++=+++=+++=:*
+@@@@@@@@@@@#.   %@@@@# @---@=--@+--%-=
+@@@@@*. ..      %@@@@#.@   @   @:  #==
+@@@@.           %@@@@#.@   @   %:  #==
+@@@@=           %@@@@%.@.:-@-::@+::%==
+@@@@%         -#@@@@@@@@*--@=--@+--%==
+@@@@.       .@@@@@@@@@@@@* @   %:  #==
+@*-         @@@@@@@%@@@@@@@@   %:  #==
++          +@@@@@:   =@@@@@@---@+--%==
++          +@@@@@:   =@@@@@@---@+--%==
+@*-         @@@@@@@%@@@@@@@@   %:  #==
+@@@@.       .@@@@@@@@@@@@* @   %:  #==
+@@@@%         -#@@@@@@@@*--@=--@+--%==
+@@@@=           %@@@@%.@.:-@-::@+::%==
+@@@@.           %@@@@#.@   @   %:  #==
+@@@@@*. ..      %@@@@#.@   @   @:  #==
+@@@@@@@@@@@#.   %@@@@# @---@=--@+--%-=
+@@@@@@@@@@@@@:::@@@@@@:=+++=+++=+++=:*</pre>
+          <p class="blurb">Humanoid-robot warehouse simulation platform in JavaFX. Co-authored an 80-page software spec with a 7-person team; designed every UI screen in Figma; built the visual identity in Illustrator.</p>
+        </div>
+        <div class="stack"><span>JAVA</span><span>JAVAFX</span><span>POSTGRES</span><span>FIGMA</span></div>
+      </article>
+
+      <article class="pcard p4">
+        <span class="pnum">№ 04</span>
+        <div>
+          <h3>TAHQÎQ.</h3>
+          <pre class="ascii tall" aria-hidden="true">              S
+            /   \
+          NP     VP
+         /  \   /  \
+        D    N V    NP
+        |    | |   /  \
+       the cat saw  D   N
+                    |   |
+                   the dog</pre>
+          <p class="blurb">Desktop app for studying language through syntax-tree flashcards. Build constituency trees with drag-and-drop; review on an SM-2 spaced-repetition schedule. Offline-first, native installers across Win / macOS / Linux.</p>
+        </div>
+        <div class="stack"><span>RUST</span><span>TAURI</span><span>REACT</span><span>TYPESCRIPT</span></div>
+      </article>
+
+      <article class="pcard p5">
+        <span class="pnum">№ 05</span>
+        <div>
+          <h3>DHIKRTOP</h3>
+          <pre class="ascii tall" aria-hidden="true">        .--.          .--.
+      .'    `.      .'    `.
+     /        \    /        \
+    |   ZIKR   |--|   33x    |
+     \        /    \        /
+      `.    .'      `.    .'
+        `--'  o  o   `--'
+              .  .
+            o       o
+              .  .
+              `--'
+        SUBHANALLAH · ALHAMDULILLAH</pre>
+          <p class="blurb">Browser extension that reads context — what you're doing, when you're idle — to surface adhkar at the right moment. Plus a Qur'an memorization aide with random-placement verification and progress tracking.</p>
+        </div>
+        <div class="stack"><span>TYPESCRIPT</span><span>VITE</span><span>TAURI</span><span>WEB-SPEECH</span></div>
+      </article>
+
+      <article class="pcard p7">
+        <span class="pnum">№ 07</span>
+        <div>
+          <h3>BIKERS<br>ESTIMATOR</h3>
+          <pre class="ascii tall" aria-hidden="true">           __o
+         _ \&lt;,_
+        (*)/ (*)
+       /        \
+      /  REGRESSION
+     /     PIPELINE
+    /__________________
+       NUMPY · SKLEARN</pre>
+          <p class="blurb">Linear-regression model predicting daily biker counts from engineered environmental and temporal features. Reusable preprocessing → feature engineering → evaluation pipeline.</p>
+        </div>
+        <div class="stack"><span>PYTHON</span><span>NUMPY</span><span>SCIKIT</span></div>
+      </article>
+
+      <article class="pcard p6">
+        <span class="pnum">№ 06</span>
+        <div>
+          <h3>HAYBA<br>MCP</h3>
+          <pre class="ascii" aria-hidden="true">                 ....                 
+            -*#%######%#+:            
+          *@%=.        .=%@=          
+        -@#.   -+.     .- :@@.        
+       -@=  :#@@@   -+@@-   #@        
+       @#  #@#@@@#  *@@+     @%       
+      .@- %+  -@@*  +@@+     #@       
+       @+ :   -@@*  +@@+     @@       
+       +@.    *@@@=*@@@@#+  =@:       
+        *@=   -#@@@@=+@*.  *@-        
+         :%@+.          .*@#          
+           :*%%#*+=+**#%%+.           
+                :----:                
+   ::  - -=  - -::: .::-. .=.  -      
+   %@ .@-@+#+@-@*+@=@@##.-@#@-:@.     
+    =--- =  +=.-  =:-=--:=: .=.=--.   
+          -%==+=++=*+*=++*+           
+           .   .       . .            </pre>
+          <p class="blurb">Model Context Protocol server bridging AI assistants directly into Unreal's PCGEx procedural toolkit and Gaea terrain — drive node graphs, terrain builds, and editor workflows from natural language.</p>
+        </div>
+        <div class="stack"><span>MCP</span><span>UE5</span><span>PCGEX</span><span>GAEA</span><span>TYPESCRIPT</span></div>
+      </article>
+
+      <article class="pcard p8" style="border-right:0">
+        <span class="pnum">№ 08</span>
+        <div>
+          <h3>MIND<br>STEP AR</h3>
+          <pre class="ascii" aria-hidden="true">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@</pre>
+          <p class="blurb">Augmented-reality exercise HUD with preset-driven workout flows. Tooling around component generation and JSON-driven layout authoring.</p>
+        </div>
+        <div class="stack"><span>AR</span><span>PYTHON</span><span>JSON-DSL</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- WORK SECOND -->
+  <section id="work">
+    <div class="sec-head">
+      <div class="num">§02</div>
       <h2>SELECTED WORK</h2>
       <div class="tag">2021 — PRESENT</div>
     </div>
@@ -250,84 +495,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="sec-head">
-      <div class="num">§02</div>
-      <h2>THINGS I'VE SHIPPED</h2>
-      <div class="tag">SELECTED · 2024 — 2026</div>
-    </div>
-
-    <div class="pgrid">
-
-      <article class="pcard p1 red">
-        <span class="pnum">№ 01</span>
-        <div>
-          <span class="badge">RUNNER-UP / McWICS 2026</span>
-          <h3>FALCENTRY.</h3>
-          <p class="blurb">Node-based platform for designing and solving visual puzzles. Awarded runner-up out of 100+ projects at McGill's McWics Hackathon. Real-time multi-client sync, scalable AWS backend, SEO-optimized Next.js frontend.</p>
-        </div>
-        <div class="stack"><span>NEXT.JS</span><span>REACT</span><span>AWS</span><span>FIREBASE</span></div>
-        <span class="corner">→ FALCENTRY.COM</span>
-      </article>
-
-      <article class="pcard p2">
-        <span class="pnum">№ 02</span>
-        <div>
-          <h3>OPEN<br>ROBOTICS</h3>
-          <p class="blurb">JavaFX warehouse-simulation platform. Co-authored an 80-page software spec with a 7-person team; designed every UI screen in Figma; built the visual identity in Illustrator.</p>
-        </div>
-        <div class="stack"><span>JAVA</span><span>JAVAFX</span><span>POSTGRES</span><span>FIGMA</span></div>
-      </article>
-
-      <article class="pcard p3">
-        <span class="pnum">№ 03</span>
-        <div>
-          <h3>TAHQÎQ.</h3>
-          <p class="blurb">Desktop app for studying language through syntax-tree flashcards. Build constituency trees with drag-and-drop; review on an SM-2 spaced-repetition schedule. Offline-first, native installers across Win / macOS / Linux.</p>
-        </div>
-        <div class="stack"><span>RUST</span><span>TAURI</span><span>REACT</span><span>TYPESCRIPT</span></div>
-      </article>
-
-      <article class="pcard p4">
-        <span class="pnum">№ 04</span>
-        <div>
-          <h3>DHIKRTOP</h3>
-          <p class="blurb">Browser extension that reads context — what you're doing, when you're idle — to surface adhkar at the right moment. Plus a Qur'an memorization aide with random-placement verification and progress tracking.</p>
-        </div>
-        <div class="stack"><span>TYPESCRIPT</span><span>VITE</span><span>TAURI</span><span>WEB-SPEECH</span></div>
-      </article>
-
-      <article class="pcard p5">
-        <span class="pnum">№ 05</span>
-        <div>
-          <h3>BIKERS<br>ESTIMATOR</h3>
-          <p class="blurb">Linear-regression model predicting daily biker counts from engineered environmental and temporal features. Reusable preprocessing → feature engineering → evaluation pipeline.</p>
-        </div>
-        <div class="stack"><span>PYTHON</span><span>NUMPY</span><span>SCIKIT</span></div>
-      </article>
-
-      <article class="pcard p6">
-        <span class="pnum">№ 06</span>
-        <div>
-          <h3>HAYBA<br>MCP</h3>
-          <p class="blurb">Model Context Protocol server that bridges AI assistants directly into Unreal's PCGEx procedural toolkit and Gaea terrain — drive node graphs, terrain builds, and editor workflows from natural language.</p>
-        </div>
-        <div class="stack"><span>MCP</span><span>UE5</span><span>PCGEX</span><span>GAEA</span><span>TYPESCRIPT</span></div>
-      </article>
-
-      <article class="pcard p7" style="border-right:0">
-        <span class="pnum">№ 07</span>
-        <div>
-          <h3>MIND<br>STEP AR</h3>
-          <p class="blurb">Augmented-reality exercise HUD with preset-driven workout flows. Tooling around component generation and JSON-driven layout authoring.</p>
-        </div>
-        <div class="stack"><span>AR</span><span>PYTHON</span><span>JSON-DSL</span></div>
-      </article>
-
-    </div>
-  </section>
-
   <!-- SKILLS -->
   <section id="skills">
     <div class="sec-head">
@@ -364,16 +531,15 @@
     </div>
   </section>
 
-  <div class="marq"><span>HIRE ME <i>✱</i> ZEJBADR@GMAIL.COM <i>✱</i> +1 438 366 1077 <i>✱</i> GITHUB.COM/ZAJALIST <i>✱</i> LINKEDIN / BADR-ZEJLI <i>✱</i> ZAJALIST.COM <i>✱</i> HIRE ME <i>✱</i> ZEJBADR@GMAIL.COM <i>✱</i></span></div>
+  <div class="marq"><span>HIRE ME <i>&#10033;</i> ZEJBADR@GMAIL.COM <i>&#10033;</i> +1 438 366 1077 <i>&#10033;</i> GITHUB.COM/ZAJALIST <i>&#10033;</i> LINKEDIN / BADR-ZEJLI <i>&#10033;</i> ZAJALIST.COM <i>&#10033;</i> HIRE ME <i>&#10033;</i> ZEJBADR@GMAIL.COM <i>&#10033;</i></span></div>
 
-  <!-- CONTACT -->
   <section class="contact" id="contact">
-    <div class="sec-head" style="margin-bottom:2rem">
+    <div class="sec-head">
       <div class="num">§04</div>
       <h2>END / CONTACT</h2>
       <div class="tag">REPLIES WITHIN 24H</div>
     </div>
-    <h2>LET'S BUILD<br>SOMETHING <span class="red">GOOD.</span></h2>
+    <h2 class="big">LET'S BUILD<br>SOMETHING <span class="red">GOOD.</span></h2>
     <div class="grid">
       <a href="mailto:zejbadr@gmail.com"><small>EMAIL →</small>ZEJBADR@GMAIL.COM</a>
       <a href="tel:+14383661077"><small>PHONE →</small>+1 438 366 1077</a>
