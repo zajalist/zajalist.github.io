@@ -1,398 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BADR ZEJLI / SOFTWARE ENGINEER</title>
-<meta name="description" content="Badr Zejli — Computer Science, McGill. Builds node-based platforms, language tools, and game-engine automation. McWics Hackathon runner-up." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#ecebe5;
-    --ink:#0a0a0a;
-    --red:#ff3b1f;
-    --line:#0a0a0a;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--paper)}
-  body{
-    background:var(--paper);color:var(--ink);
-    font-family:'Inter',Helvetica,Arial,sans-serif;font-weight:500;
-    line-height:1.35;-webkit-font-smoothing:antialiased;
-    background-image:
-      linear-gradient(var(--paper) 0 0),
-      repeating-linear-gradient(0deg,transparent 0 31px,rgba(10,10,10,.06) 31px 32px);
-    background-blend-mode:multiply;
-  }
-  ::selection{background:var(--red);color:var(--paper)}
-  a{color:inherit;text-decoration:none}
-  a:hover{background:var(--ink);color:var(--paper)}
-  .mono{font-family:'Space Mono',monospace}
-  .ablack{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;letter-spacing:-.02em;text-transform:uppercase}
-
-  .frame{border:3px solid var(--ink);margin:1rem;background:var(--paper);position:relative}
-  @media(max-width:700px){.frame{margin:.5rem;border-width:2px}}
-
-  .topbar{display:grid;grid-template-columns:1fr auto 1fr;gap:0;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
-  .topbar > *{padding:.6rem 1rem}
-  .topbar > *:not(:last-child){border-right:3px solid var(--ink)}
-  .topbar .blink::after{content:'_';animation:blink 1s steps(1) infinite}
-  @keyframes blink{50%{opacity:0}}
-  @media(max-width:700px){.topbar{grid-template-columns:1fr 1fr}.topbar > *{font-size:.62rem;padding:.5rem .6rem}.topbar>*:nth-child(2){display:none}}
-
-  nav.main{display:flex;border-bottom:3px solid var(--ink);font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
-  nav.main a{padding:.85rem 1.25rem;border-right:3px solid var(--ink);font-weight:700}
-  nav.main .grow{flex:1;border-right:3px solid var(--ink);background:repeating-linear-gradient(-45deg,var(--ink) 0 6px,transparent 6px 14px)}
-  nav.main .last{border-right:none}
-
-  /* hero */
-  .hero{padding:2rem 1.5rem 1rem;border-bottom:3px solid var(--ink);position:relative;overflow:hidden}
-  .hero .meta-row{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
-  .hero .meta-row .pill{border:2px solid var(--ink);padding:.15rem .55rem;font-weight:700}
-  .hero .meta-row .pill.red{background:var(--red);color:var(--paper);border-color:var(--ink)}
-  h1.giant{font-family:'Archivo Black','Inter',sans-serif;font-weight:900;font-size:clamp(3.5rem,17vw,17rem);line-height:.82;letter-spacing:-.04em;text-transform:uppercase;margin:0;position:relative;z-index:2}
-  h1.giant .red{color:var(--red)}
-  h1.giant .out{-webkit-text-stroke:3px var(--ink);color:var(--paper);text-stroke:3px var(--ink)}
-
-  .hero .strap{display:grid;grid-template-columns:2fr 1fr}
-  .hero .strap > div{padding:1rem 1.25rem}
-  .hero .strap > div:first-child{border-right:3px solid var(--ink);font-size:1.05rem;font-weight:500;line-height:1.4;max-width:46rem}
-  .hero .strap > div:last-child{font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;line-height:1.5}
-  .hero .strap em{font-style:italic;background:var(--red);color:var(--paper);padding:0 .25rem}
-  @media(max-width:700px){.hero .strap{grid-template-columns:1fr}.hero .strap > div:first-child{border-right:0;border-bottom:3px solid var(--ink)}}
-
-  /* sec head */
-  .sec-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper)}
-  .sec-head .num{padding:.55rem 1rem;border-right:3px solid var(--paper);font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem}
-  .sec-head h2{padding:.55rem 1rem;font-family:'Archivo Black',sans-serif;font-size:1.15rem;letter-spacing:.04em;text-transform:uppercase}
-  .sec-head .tag{padding:.55rem 1rem;border-left:3px solid var(--paper);font-family:'Space Mono',monospace;font-size:.75rem;text-transform:uppercase}
-
-  /* projects */
-  .pgrid{display:grid;grid-template-columns:repeat(12,1fr);border-bottom:3px solid var(--ink)}
-  .pcard{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.5rem 1.25rem;display:flex;flex-direction:column;justify-content:space-between;min-height:340px;position:relative;background:var(--paper)}
-  .pcard.red{background:var(--red);color:var(--paper)}
-  .pcard.red .stack span{border-color:var(--paper);color:var(--paper)}
-  .pcard .pnum{position:absolute;top:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem}
-  .pcard .badge{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .55rem;border:2px solid currentColor;margin-bottom:1rem}
-  .pcard h3{font-family:'Archivo Black',sans-serif;font-size:2rem;line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.6rem}
-  .pcard .blurb{font-size:.92rem;line-height:1.45;margin-bottom:1rem;max-width:42ch}
-  .pcard .stack{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
-  .pcard .stack span{font-family:'Space Mono',monospace;font-size:.7rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase;letter-spacing:.04em}
-  .pcard .corner{position:absolute;bottom:.6rem;right:.85rem;font-family:'Space Mono',monospace;font-size:.72rem;font-weight:700;text-transform:uppercase}
-  .p1{grid-column:span 8}
-  .p2{grid-column:span 4}
-  .p3{grid-column:span 5}
-  .p4{grid-column:span 7}
-  .p5{grid-column:span 7}
-  .p6{grid-column:span 5}
-  .p7{grid-column:span 4}
-  .p8{grid-column:span 8}
-  @media(max-width:1000px){.pcard{grid-column:span 12 !important;border-right:0}}
-
-  /* work */
-  .work-row{display:grid;grid-template-columns:130px 1fr 180px;border-bottom:3px solid var(--ink)}
-  .work-row > *{padding:1.5rem 1.25rem}
-  .work-row > *:not(:last-child){border-right:3px solid var(--ink)}
-  .work-row .when{font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;text-transform:uppercase}
-  .work-row h3{font-family:'Archivo Black',sans-serif;font-size:1.6rem;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.2rem;line-height:1}
-  .work-row .role{font-family:'Space Mono',monospace;font-size:.78rem;text-transform:uppercase;margin-bottom:.85rem}
-  .work-row ul{list-style:none}
-  .work-row li{padding:.3rem 0 .3rem 1.6rem;position:relative;font-size:.95rem;border-top:1px dashed var(--ink)}
-  .work-row li:first-child{border-top:0}
-  .work-row li::before{content:'■';position:absolute;left:0;top:.45rem;color:var(--red);font-size:.7rem}
-  .work-row .place{font-family:'Space Mono',monospace;font-weight:700;font-size:.8rem;text-transform:uppercase;text-align:right}
-  @media(max-width:800px){.work-row{grid-template-columns:1fr}.work-row > *{border-right:0 !important;border-bottom:3px solid var(--ink);padding:1rem 1rem}.work-row > *:last-child{border-bottom:0}.work-row .place{text-align:left}}
-
-  /* skills */
-  .skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:3px solid var(--ink)}
-  .skills > div{border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:1.25rem 1.25rem 1.5rem}
-  .skills > div:nth-child(3n){border-right:0}
-  .skills > div:nth-last-child(-n+3){border-bottom:0}
-  .skills h4{font-family:'Space Mono',monospace;font-weight:700;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:2px solid var(--ink)}
-  .skills h4 span{background:var(--ink);color:var(--paper);padding:.1rem .4rem;margin-right:.4rem}
-  .skills ul{list-style:none;display:flex;flex-wrap:wrap;gap:.35rem}
-  .skills li{font-family:'Space Mono',monospace;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border:2px solid var(--ink);text-transform:uppercase}
-  .skills li:hover{background:var(--ink);color:var(--paper)}
-  @media(max-width:800px){.skills{grid-template-columns:1fr}.skills > div{border-right:0 !important}}
-
-  /* marquee */
-  .marq{overflow:hidden;border-bottom:3px solid var(--ink);background:var(--ink);color:var(--paper);padding:.75rem 0;font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:.02em;font-size:1.1rem;white-space:nowrap}
-  .marq span{display:inline-block;padding-left:100%;animation:m 28s linear infinite}
-  .marq i{font-style:normal;color:var(--red);margin:0 1rem}
-  @keyframes m{to{transform:translateX(-100%)}}
-
-  .contact{padding:3rem 1.5rem;border-bottom:3px solid var(--ink)}
-  .contact h2.big{font-family:'Archivo Black',sans-serif;font-size:clamp(3rem,12vw,11rem);text-transform:uppercase;line-height:.82;letter-spacing:-.04em;margin-top:1rem}
-  .contact h2.big .red{color:var(--red)}
-  .contact .grid{margin-top:2rem;display:grid;grid-template-columns:repeat(4,1fr);border:3px solid var(--ink)}
-  .contact .grid a{padding:1rem 1rem;border-right:3px solid var(--ink);font-family:'Space Mono',monospace;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;display:flex;flex-direction:column;gap:.25rem}
-  .contact .grid a:last-child{border-right:0}
-  .contact .grid a small{font-size:.65rem;font-weight:400;opacity:.7}
-  .contact .grid a:hover{background:var(--red);color:var(--paper)}
-  @media(max-width:800px){.contact .grid{grid-template-columns:1fr 1fr}.contact .grid a{border-bottom:3px solid var(--ink)}.contact .grid a:nth-child(2n){border-right:0}.contact .grid a:nth-last-child(-n+2){border-bottom:0}}
-
-  footer{display:grid;grid-template-columns:1fr 1fr 1fr;font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em}
-  footer > *{padding:.7rem 1rem;border-right:3px solid var(--ink)}
-  footer > *:last-child{border-right:0;text-align:right}
-  footer .center{text-align:center}
-  @media(max-width:700px){footer{grid-template-columns:1fr}footer > *{border-right:0;border-bottom:3px solid var(--ink);text-align:left !important}footer > *:last-child{border-bottom:0}}
-
-  section{scroll-margin-top:1rem}
-</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Badr Zejli — zajalist</title>
+<meta name="description" content="Badr Zejli — CS @ McGill. I build small worlds that compute: shaders, agents, and the engines behind them." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="frame">
-
-  <div class="topbar">
-    <div>FILE: BADR.ZEJLI / V.2026.05</div>
-    <div>PORTFOLIO</div>
-    <div style="text-align:right" class="blink">SYSTEM ONLINE</div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span>badr</span><span class="dim">.zejli()</span></a>
+    <nav class="nav-links">
+      <a href="#writing">Writing</a>
+      <a href="#work">Projects</a>
+      <a href="#about">About</a>
+      <a class="cta" href="https://github.com/zajalist" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
   </div>
+</header>
 
-  <nav class="main">
-    <a href="#hero">00 / INDEX</a>
-    <a href="#projects">01 / PROJECTS</a>
-    <a href="#work">02 / WORK</a>
-    <a href="#skills">03 / STACK</a>
-    <span class="grow"></span>
-    <a href="#contact" class="last">04 / CONTACT &rarr;</a>
-  </nav>
+<main id="top">
 
-  <header class="hero" id="hero">
-    <div class="meta-row">
-      <div><span class="pill red">&bull; AVAILABLE</span> SUMMER 2026</div>
-      <div>MONTRÉAL · QC · CA</div>
-      <div>B.SC. COMPUTER SCIENCE — McGILL '27</div>
-    </div>
-    <h1 class="giant">BADR<br><span class="out">ZEJ</span><span class="red">LI.</span></h1>
-    <div class="strap">
-      <div>I build <em>node-based platforms</em>, language tools, and game-engine automation. Software that turns dense systems into something you can actually touch. Currently studying CS at McGill, shipping things in the open.</div>
-      <div>
-        <div>FOCUS / FULL-STACK</div>
-        <div>FOCUS / SYSTEMS</div>
-        <div>FOCUS / TOOLING</div>
-        <div style="margin-top:.5rem">RECENT / RUNNER-UP</div>
-        <div>McWICS HACKATHON 2026</div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="loc">Montréal · Computer Science @ McGill</p>
+      <h1>Badr Zejli</h1>
+      <p class="tagline">I build small worlds that compute — shaders, agents, and the engines behind them.</p>
+      <p class="bio">CS student working at the messy seam where graphics, language models, and game engines meet. Most of what I make starts as a 2&nbsp;a.m. hack and ends up here, written down.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#work">View projects
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn btn-outline" href="https://github.com/zajalist" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.6-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-outline" href="https://linkedin.com/in/badr-zejli-324228328" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn btn-outline" href="mailto:zejbadr@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          Email
+        </a>
       </div>
-    </div>
-  </header>
-
-  <div class="marq"><span>SHIPPING IN PUBLIC <i>&#10033;</i> NEXT.JS · AWS · RUST · UE5 <i>&#10033;</i> McWICS HACKATHON RUNNER-UP <i>&#10033;</i> AVAILABLE FOR SUMMER 2026 <i>&#10033;</i> MONTRÉAL → ANYWHERE <i>&#10033;</i> BADR ZEJLI <i>&#10033;</i> SHIPPING IN PUBLIC <i>&#10033;</i> NEXT.JS · AWS · RUST · UE5 <i>&#10033;</i></span></div>
-
-  <!-- PROJECTS FIRST -->
-  <section id="projects">
-    <div class="sec-head">
-      <div class="num">§01</div>
-      <h2>THINGS I'VE SHIPPED</h2>
-      <div class="tag">SELECTED · 2024 — 2026</div>
-    </div>
-
-    <div class="pgrid">
-
-      <article class="pcard p1 red">
-        <span class="pnum">№ 01</span>
-        <div>
-          <span class="badge">RUNNER-UP / McWICS 2026</span>
-          <h3>FALCENTRY.</h3>
-          <p class="blurb">Node-based platform for designing and solving visual puzzles. Awarded runner-up out of 100+ projects at McGill's McWics Hackathon. Real-time multi-client sync, scalable AWS backend, SEO-optimized Next.js frontend.</p>
-        </div>
-        <div class="stack"><span>NEXT.JS</span><span>REACT</span><span>AWS</span><span>FIREBASE</span></div>
-        <span class="corner">→ FALCENTRY.COM</span>
-      </article>
-
-      <article class="pcard p2">
-        <span class="pnum">№ 02</span>
-        <div>
-          <h3>MERMAN.</h3>
-          <p class="blurb">A Mermaid class-diagram → code compiler. Sketch your architecture in Mermaid, get one C++ or Python boilerplate file per class — via REST API, CLI, or a Botpress-powered Discord agent. Botpress hackathon submission.</p>
-        </div>
-        <div class="stack"><span>TYPESCRIPT</span><span>BOTPRESS</span><span>EXPRESS</span><span>ZOD</span></div>
-      </article>
-
-      <article class="pcard p3">
-        <span class="pnum">№ 03</span>
-        <div>
-          <h3>OPEN<br>ROBOTICS</h3>
-          <p class="blurb">Humanoid-robot warehouse simulation platform in JavaFX. Co-authored an 80-page software spec with a 7-person team; designed every UI screen in Figma; built the visual identity in Illustrator.</p>
-        </div>
-        <div class="stack"><span>JAVA</span><span>JAVAFX</span><span>POSTGRES</span><span>FIGMA</span></div>
-      </article>
-
-      <article class="pcard p4">
-        <span class="pnum">№ 04</span>
-        <div>
-          <h3>TAHQÎQ.</h3>
-          <p class="blurb">Desktop app for studying language through syntax-tree flashcards. Build constituency trees with drag-and-drop; review on an SM-2 spaced-repetition schedule. Offline-first, native installers across Win / macOS / Linux.</p>
-        </div>
-        <div class="stack"><span>RUST</span><span>TAURI</span><span>REACT</span><span>TYPESCRIPT</span></div>
-      </article>
-
-      <article class="pcard p5">
-        <span class="pnum">№ 05</span>
-        <div>
-          <h3>DHIKRTOP</h3>
-          <p class="blurb">Browser extension that reads context — what you're doing, when you're idle — to surface adhkar at the right moment. Plus a Qur'an memorization aide with random-placement verification and progress tracking.</p>
-        </div>
-        <div class="stack"><span>TYPESCRIPT</span><span>VITE</span><span>TAURI</span><span>WEB-SPEECH</span></div>
-      </article>
-
-      <article class="pcard p7">
-        <span class="pnum">№ 07</span>
-        <div>
-          <h3>BIKERS<br>ESTIMATOR</h3>
-          <p class="blurb">Linear-regression model predicting daily biker counts from engineered environmental and temporal features. Reusable preprocessing → feature engineering → evaluation pipeline.</p>
-        </div>
-        <div class="stack"><span>PYTHON</span><span>NUMPY</span><span>SCIKIT</span></div>
-      </article>
-
-      <article class="pcard p6">
-        <span class="pnum">№ 06</span>
-        <div>
-          <h3>HAYBA<br>MCP</h3>
-          <p class="blurb">Model Context Protocol server bridging AI assistants directly into Unreal's PCGEx procedural toolkit and Gaea terrain — drive node graphs, terrain builds, and editor workflows from natural language.</p>
-        </div>
-        <div class="stack"><span>MCP</span><span>UE5</span><span>PCGEX</span><span>GAEA</span><span>TYPESCRIPT</span></div>
-      </article>
-
-      <article class="pcard p8" style="border-right:0">
-        <span class="pnum">№ 08</span>
-        <div>
-          <h3>MIND<br>STEP AR</h3>
-          <p class="blurb">Augmented-reality exercise HUD with preset-driven workout flows. Tooling around component generation and JSON-driven layout authoring.</p>
-        </div>
-        <div class="stack"><span>AR</span><span>PYTHON</span><span>JSON-DSL</span></div>
-      </article>
-
     </div>
   </section>
 
-  <!-- WORK SECOND -->
+  <!-- Stats -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat"><div class="v">5+</div><div class="l">Hackathon wins &amp; placements</div></div>
+        <div class="stat"><div class="v">4</div><div class="l">Languages in active use</div></div>
+        <div class="stat"><div class="v">B.Sc.</div><div class="l">CS @ McGill (2024–)</div></div>
+        <div class="stat"><div class="v">∞</div><div class="l">Shaders compiled</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
   <section id="work">
-    <div class="sec-head">
-      <div class="num">§02</div>
-      <h2>SELECTED WORK</h2>
-      <div class="tag">2021 — PRESENT</div>
-    </div>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Things I've built</h2>
+        <a href="https://github.com/zajalist" target="_blank" rel="noreferrer">More on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="grid">
 
-    <div class="work-row">
-      <div class="when">SUM<br>2025</div>
-      <div>
-        <h3>DUM</h3>
-        <div class="role">Instructional Design Intern</div>
-        <ul>
-          <li>Migrated and translated 15 high-school courses to a new LMS in 3 months — interactive HTML modules with embedded multimedia, generative-AI in the pipeline.</li>
-          <li>Designed virtual physics labs in RayOptics; modeled optical systems via structured JSON specs.</li>
-          <li>Built a Python web scraper to fetch, organize, and reformat course materials for offline distribution.</li>
-          <li>Shipped a JS Google Sheets automation generating course summaries — cut instructor prep time ~50%.</li>
-        </ul>
-      </div>
-      <div class="place">MONTRÉAL<br>QC</div>
-    </div>
+        <article class="card">
+          <div class="card-top">
+            <div><h3>Plumb</h3><div class="year">2026</div></div>
+            <span class="badge">Hackathon</span>
+          </div>
+          <div class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>2nd · Best Use of Vultr</div>
+          <p>A deterministic 3D reasoning + physics-validation layer exposed to an LLM over MCP — it catches and auto-repairs invalid object placements (floating, clipping) encoded in a grammar of world predicates.</p>
+          <div class="tech"><span>Python</span><span>FastAPI</span><span>MuJoCo</span><span>MCP</span><span>React</span><span>Three.js</span></div>
+          <div class="card-links"><a href="https://devpost.com/software/plumb" target="_blank" rel="noreferrer">Devpost
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
+        </article>
 
-    <div class="work-row">
-      <div class="when">2022→<br>NOW</div>
-      <div>
-        <h3>TUTORAX</h3>
-        <div class="role">Academic Tutor</div>
-        <ul>
-          <li>One-on-one tutoring for high-school and primary students, specialty in turning dense math/CS into clean explanations.</li>
-          <li>Structured curricula, progress tracking, parent reporting — the communication discipline that shows up in every spec doc I write today.</li>
-        </ul>
-      </div>
-      <div class="place">MONTRÉAL<br>QC</div>
-    </div>
+        <article class="card">
+          <div class="card-top">
+            <div><h3>Shaddy</h3><div class="year">2025</div></div>
+            <span class="badge">Hackathon</span>
+          </div>
+          <div class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>1st · Hack the Mountain</div>
+          <p>A Scratch-style visual editor for GPU shader art with a bidirectional Recipe↔GLSL compiler, magic-comment round-tripping, and GPU-driven parameter animation. Beat 30+ teams.</p>
+          <div class="tech"><span>TypeScript</span><span>React</span><span>WebGL2</span><span>GLSL</span><span>Anthropic SDK</span></div>
+          <div class="card-links"><a href="https://devpost.com/software/shaddy" target="_blank" rel="noreferrer">Devpost
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
+        </article>
 
-    <div class="work-row">
-      <div class="when">2021—<br>2022</div>
-      <div>
-        <h3>JAQUÉBEC</h3>
-        <div class="role">VP, Marketing &amp; Sales</div>
-        <ul>
-          <li>Defined a young startup's visual identity, voice, and pitch — branding, sales decks, customer conversations.</li>
-          <li>Translated a technical product into something a non-technical buyer would actually pay for.</li>
-        </ul>
-      </div>
-      <div class="place">MONTRÉAL<br>QC</div>
-    </div>
+        <article class="card">
+          <div class="card-top">
+            <div><h3>Hayba</h3><div class="year">WIP · 2026</div></div>
+            <span class="badge">Tooling</span>
+          </div>
+          <p>An agentic MCP toolkit that drives Unreal Engine 5 — including the first tools to wire into the PCGExtendedToolkit — plus a UE5 C++ editor plugin with a force-directed scene map and semantic asset search (BM25 + embeddings).</p>
+          <div class="tech"><span>C++</span><span>Rust</span><span>TypeScript</span><span>MCP</span><span>WebGL2</span><span>Three.js</span></div>
+          <div class="card-links"><a href="https://hayba.vercel.app/index.html" target="_blank" rel="noreferrer">Live
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
+        </article>
 
-    <div class="work-row" style="border-bottom:0">
-      <div class="when">2024→<br>NOW</div>
-      <div>
-        <h3>McGILL · MSA &amp; MIT McGILL</h3>
-        <div class="role">Director of Education / Director of Community Building</div>
-        <ul>
-          <li>MSA — coordinated logistics &amp; comms for 50+ educational events.</li>
-          <li>MIT McGill — planned coding events, supported hackathon logistics &amp; student engagement.</li>
-        </ul>
-      </div>
-      <div class="place">McGILL<br>UNIV.</div>
-    </div>
-  </section>
+        <article class="card">
+          <div class="card-top">
+            <div><h3>Falcentry</h3><div class="year">2025</div></div>
+            <span class="badge">Hackathon</span>
+          </div>
+          <div class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>Runner-up · McWiCS</div>
+          <p>A node-based puzzle-authoring and solving platform. I built the SSR/SEO frontend and self-hosted the early backend on Vercel. 100+ teams in the room.</p>
+          <div class="tech"><span>Next.js</span><span>React</span><span>Firebase</span></div>
+          <div class="card-links"><a href="https://www.falcentry.com/" target="_blank" rel="noreferrer">Live
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
+        </article>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="sec-head">
-      <div class="num">§03</div>
-      <h2>THE STACK</h2>
-      <div class="tag">WHAT I REACH FOR</div>
-    </div>
+        <article class="card">
+          <div class="card-top">
+            <div><h3>Mindstep</h3><div class="year">2025</div></div>
+            <span class="badge">Hackathon</span>
+          </div>
+          <div class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>3rd · CareXR</div>
+          <p>A prescription-management app for occupational therapists, with a companion Snap Spectacles AR experience prototyped in Lens Studio.</p>
+          <div class="tech"><span>React Native</span><span>TypeScript</span><span>Lens Studio</span><span>Snap Spectacles</span></div>
+          <div class="card-links"><a href="https://devpost.com/software/mindstep-f3bj5q" target="_blank" rel="noreferrer">Devpost
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
+        </article>
 
-    <div class="skills">
-      <div>
-        <h4><span>A</span>LANGUAGES</h4>
-        <ul><li>PYTHON</li><li>JAVA</li><li>C / C++</li><li>TYPESCRIPT</li><li>JAVASCRIPT</li><li>OCAML</li><li>RUST</li><li>SQL</li><li>MIPS</li><li>BASH</li><li>UE5 BP</li></ul>
-      </div>
-      <div>
-        <h4><span>B</span>FRONTEND</h4>
-        <ul><li>NEXT.JS</li><li>REACT</li><li>TAURI</li><li>VITE</li><li>HTML/CSS</li><li>FIGMA</li><li>JAVAFX</li></ul>
-      </div>
-      <div>
-        <h4><span>C</span>BACKEND / INFRA</h4>
-        <ul><li>AWS</li><li>FIREBASE</li><li>SUPABASE</li><li>POSTGRES</li><li>RENDER</li><li>DOCKER</li></ul>
-      </div>
-      <div>
-        <h4><span>D</span>DATA / ML</h4>
-        <ul><li>NUMPY</li><li>SCIKIT-LEARN</li><li>R</li><li>STATISTICS</li></ul>
-      </div>
-      <div>
-        <h4><span>E</span>COURSEWORK</h4>
-        <ul><li>ALGORITHMS</li><li>OS</li><li>THEORY OF COMP.</li><li>FUNCTIONAL PROG.</li><li>DATABASES</li><li>ML</li><li>SOFT-ENG PROJECT</li></ul>
-      </div>
-      <div>
-        <h4><span>F</span>LEADERSHIP</h4>
-        <ul><li>MSA McGILL — DIR. EDUCATION</li><li>MIT McGILL — DIR. COMMUNITY</li></ul>
       </div>
     </div>
   </section>
 
-  <div class="marq"><span>HIRE ME <i>&#10033;</i> ZEJBADR@GMAIL.COM <i>&#10033;</i> +1 438 366 1077 <i>&#10033;</i> GITHUB.COM/ZAJALIST <i>&#10033;</i> LINKEDIN / BADR-ZEJLI <i>&#10033;</i> ZAJALIST.COM <i>&#10033;</i> HIRE ME <i>&#10033;</i> ZEJBADR@GMAIL.COM <i>&#10033;</i></span></div>
-
-  <section class="contact" id="contact">
-    <div class="sec-head">
-      <div class="num">§04</div>
-      <h2>END / CONTACT</h2>
-      <div class="tag">REPLIES WITHIN 24H</div>
-    </div>
-    <h2 class="big">LET'S BUILD<br>SOMETHING <span class="red">GOOD.</span></h2>
-    <div class="grid">
-      <a href="mailto:zejbadr@gmail.com"><small>EMAIL →</small>ZEJBADR@GMAIL.COM</a>
-      <a href="tel:+14383661077"><small>PHONE →</small>+1 438 366 1077</a>
-      <a href="https://github.com/zajalist" target="_blank" rel="noopener"><small>GITHUB →</small>/ZAJALIST</a>
-      <a href="https://www.linkedin.com/in/badr-zejli-324228328/" target="_blank" rel="noopener"><small>LINKEDIN →</small>BADR-ZEJLI</a>
+  <!-- Writing -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>From the notebook</h2>
+        <a href="#">All posts
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="posts">
+        <!-- POSTS:START (generated by build.py — do not edit by hand) -->
+        <a class="post" href="posts/glsl-compiler-you-can-read.html">
+          <div class="meta">2026 · Apr · ~14 min</div>
+          <div class="ptitle">Round-tripping GLSL through a compiler you can read</div>
+          <div class="pdesc">How I built Shaddy&#x27;s bidirectional Recipe↔GLSL compiler, and why magic comments turned out to be the right abstraction for keeping a visual editor and raw shader code honest with each other.</div>
+        </a>
+        <a class="post" href="posts/llm-physics-validation.html">
+          <div class="meta">2026 · Mar · ~9 min</div>
+          <div class="ptitle">Teaching an LLM not to float objects in mid-air</div>
+          <div class="pdesc">A small grammar of 3D world predicates, a physics-validation layer, and the surprisingly hard question of what &quot;on top of&quot; actually means. Notes from building Plumb.</div>
+        </a>
+        <a class="post" href="posts/flat-context-tool-routing.html">
+          <div class="meta">2026 · Feb · ~11 min</div>
+          <div class="ptitle">Keeping context flat as your tool count grows</div>
+          <div class="pdesc">A hybrid BM25 + embedding router that loads only 10 of ~80 tool schemas at a time. Why I stopped dumping every tool into the prompt and started treating tools like a search problem.</div>
+        </a>
+        <a class="post" href="posts/tiny-cnn-odd-one-out.html">
+          <div class="meta">2026 · Jan · ~6 min</div>
+          <div class="ptitle">A 16k-parameter CNN that knows the odd one out</div>
+          <div class="pdesc">Per-group normalization, a contrastive outlier head, and just enough MixUp. What I learned squeezing 86.7% out of a model small enough to read in one screen.</div>
+        </a>
+                <!-- POSTS:END -->
+      </div>
     </div>
   </section>
 
-  <footer>
-    <div>© 2026 BADR ZEJLI</div>
-    <div class="center">DESIGNED &amp; HAND-CODED · MONTRÉAL</div>
-    <div>NO TEMPLATES · NO TRACKERS</div>
-  </footer>
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>Where I am now</h2></div>
+      <div class="about-grid">
+        <div class="panel">
+          <h4>Currently</h4>
+          <ul>
+            <li>B.Sc. CS at McGill (since '24)</li>
+            <li>Instructional-design intern @ DUM — building an LLM course-authoring pipeline</li>
+            <li>Director of Education, MSA McGill</li>
+            <li>Tutoring math &amp; CS on the side</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>Working with</h4>
+          <ul>
+            <li>Rust · C++ · TypeScript · Python</li>
+            <li>Three.js / WebGL2 · GLSL</li>
+            <li>PyTorch · NumPy</li>
+            <li>Unreal Blueprints · MCP · Next.js</li>
+          </ul>
+        </div>
+      </div>
+      <p class="about-note">
+        I read more than I ship, I keep a folder of half-finished shaders, and I think the best
+        tools feel like they were made by hand. If any of that resonates —
+        <a href="mailto:zejbadr@gmail.com">say hi</a>.
+      </p>
+    </div>
+  </section>
 
-</div>
+</main>
 
-<!-- BUILT BY HAND. VIEW SOURCE FREELY. -->
+<footer>
+  <div class="wrap foot-inner">
+    <span class="mono">© 2026 Badr Zejli · Montréal</span>
+    <div class="foot-links">
+      <a href="https://github.com/zajalist" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/badr-zejli-324228328" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="mailto:zejbadr@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Keeping context flat as your tool count grows — Badr Zejli</title>
+<meta name="description" content="A hybrid BM25 + embedding router that loads only 10 of ~80 tool schemas at a time. Why I stopped dumping every tool into the prompt and started treating tools like a search problem." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html"><span>badr</span><span class="dim">.zejli()</span></a>
+    <nav class="nav-links">
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="../index.html#about">About</a>
+      <a class="cta" href="https://github.com/zajalist" target="_blank" rel="noreferrer">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article">
+  <div class="article-head">
+    <a class="back-link" href="../index.html#writing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> All posts</a>
+    <div class="meta">2026 · Feb · ~11 min</div>
+    <h1>Keeping context flat as your tool count grows</h1>
+    <p class="summary">A hybrid BM25 + embedding router that loads only 10 of ~80 tool schemas at a time. Why I stopped dumping every tool into the prompt and started treating tools like a search problem.</p>
+    <hr />
+  </div>
+  <div class="prose">
+<blockquote>
+<p>Replace this body with the real post.</p>
+</blockquote>
+<h2>Tools are a retrieval problem</h2>
+<p>Eighty tool schemas in the prompt is mostly wasted tokens. Treat the request as
+a query and retrieve the ~10 tools that matter.</p>
+<h2>BM25 + embeddings</h2>
+<p>Lexical recall catches exact names; embeddings catch intent. The union beats
+either alone.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="mono">© 2026 Badr Zejli · Montréal</span>
+    <div class="foot-links">
+      <a href="https://github.com/zajalist" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/badr-zejli-324228328" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="mailto:zejbadr@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
